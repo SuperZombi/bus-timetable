@@ -52,6 +52,13 @@ a[href]:hover{
 	justify-content: center;
 	flex-wrap: wrap;
 }
+._64, ._280{
+	transition: 0.25s;
+}
+body:has(._280:hover) ._64,
+body:has(._64:hover) ._280{
+	opacity: 0;
+}
 </style>
 </head>
 <body>
