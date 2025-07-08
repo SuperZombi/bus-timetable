@@ -2,7 +2,12 @@
 <html>
 <head>
 	<title>Розклад автобусів</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+	<meta name='viewport' content='width=device-width'>
 <style>
+body{
+	font-family: sans-serif;
+}
 table{
 	border-collapse: collapse;
 	font-size: 14pt;
@@ -13,16 +18,21 @@ table caption{
 	border: 1px solid;
 	border-bottom: 0;
 	border-radius: 12px 12px 0 0;
+	user-select: none;
 }
-tr, th {
+tr,th{
 	border: 1px solid;
 	padding: 5px 10px;
 }
+th{
+	user-select: none;
+}
 .time{
-	font-family: monospace;
+	font-family: "Roboto Mono", monospace;
 	padding: 5px 10px;
 	border: 1px solid;
 	font-size: 14pt;
+	color: black;
 }
 ._280{
 	background: pink;
@@ -30,24 +40,28 @@ tr, th {
 ._64{
 	background: lightgreen;
 }
-
+a[href]{
+	text-decoration: none;
+}
+a[href]:hover{
+	text-decoration: underline;
+}
 .container{
 	display: flex;
-	gap: 4rem;
+	gap: 2rem 4rem;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 </style>
 </head>
 <body>
-<h1 class="container" style="gap: 1rem;">
-	<span class="time _64">64</span>
-	<span class="time _280">280</span>
-</h1>
-<div class="container">
+<h3 class="container" style="gap:1rem;user-select:none;">
+	<a class="time _64" href="https://gortransport.kharkov.ua/city_routes/394/" target="_blank">64</a>
+	<a class="time _280" href="https://gortransport.kharkov.ua/city_routes/150/" target="_blank">280</a>
+</h3>
+<div class="container" style="margin: 1rem 0;">
 	<table>
-		<caption>
-			Від метро🚇
-		</caption>
+		<caption>Від метро🚇</caption>
 		<tr>
 			<th>6</th>
 
@@ -132,13 +146,17 @@ tr, th {
 			<th>19</th>
 
 			<td class="time _280">19:05</td>
+			<td class="time _280">19:44</td>
+		</tr>
+		<tr>
+			<th>20</th>
+
+			<td class="time _280">20:25</td>
 		</tr>
 	</table>
 
 	<table>
-		<caption>
-			З дому🏠
-		</caption>
+		<caption>З дому🏠</caption>
 		<tr>
 			<th>6</th>
 
@@ -226,7 +244,17 @@ tr, th {
 
 			<td class="time _280">19:25</td>
 		</tr>
+		<tr>
+			<th>20</th>
+
+			<td class="time _280">20:05</td>
+			<td class="time _280">20:45</td>
+		</tr>
 	</table>
 </div>
+<hr>
+<p align="center">
+	<a>КП "Салтівське трамвайне депо"</a>
+</p>
 </body>
 </html>
