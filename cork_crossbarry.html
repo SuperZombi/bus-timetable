@@ -16,6 +16,7 @@
 		table{
 			border-collapse: collapse;
 			text-align: center;
+			position: relative;
 		}
 		table td, table th{
 			padding: 5px 10px;
@@ -32,6 +33,15 @@
 		table tr:not(:has(th)):hover{
 			background-color: #dbeafe;
 		}
+		.sticky {
+			position: sticky;
+			background: lightgrey;
+			height: 30px;
+		}
+		.sticky.s1 { top: 0; z-index: 3; }
+		.sticky.s2 { top: 30px; z-index: 2; }
+		.sticky.s3 { top: 60px; z-index: 1; }
+
 		.container{
 			display: flex;
 			gap: 2rem 4rem;
@@ -95,18 +105,18 @@
 		</div>
 
 		<table border="1" id="from_cork">
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">From Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Monday - Friday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Cork</td>
-				<td>Innishannon</td>
-				<td>Crossbarry</td>
-				<td>Bandon</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Cork</th>
+				<th>Innishannon</th>
+				<th>Crossbarry</th>
+				<th>Bandon</th>
 			</tr>
 			<tr>
 				<td>239</td>
@@ -276,18 +286,18 @@
 				<td>|</td>
 				<td>23:25</td>
 			</tr>
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">From Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Saturday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Cork</td>
-				<td>Innishannon</td>
-				<td>Crossbarry</td>
-				<td>Bandon</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Cork</th>
+				<th>Innishannon</th>
+				<th>Crossbarry</th>
+				<th>Bandon</th>
 			</tr>
 			<tr>
 				<td>237</td>
@@ -422,18 +432,18 @@
 				<td>|</td>
 				<td>22:40</td>
 			</tr>
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">From Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Sunday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Cork</td>
-				<td>Innishannon</td>
-				<td>Crossbarry</td>
-				<td>Bandon</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Cork</th>
+				<th>Innishannon</th>
+				<th>Crossbarry</th>
+				<th>Bandon</th>
 			</tr>
 			<tr>
 				<td>237</td>
@@ -549,18 +559,18 @@
 		</div>
 
 		<table border="1" id="to_cork">
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">To Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Monday - Friday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Bandon</td>
-				<td>Crossbarry</td>
-				<td>Innishannon</td>
-				<td>Cork</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Bandon</th>
+				<th>Crossbarry</th>
+				<th>Innishannon</th>
+				<th>Cork</th>
 			</tr>
 			<tr>
 				<td>230</td>
@@ -744,18 +754,18 @@
 				<td>21:10</td>
 				<td>21:40</td>
 			</tr>
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">To Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Saturday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Bandon</td>
-				<td>Crossbarry</td>
-				<td>Innishannon</td>
-				<td>Cork</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Bandon</th>
+				<th>Crossbarry</th>
+				<th>Innishannon</th>
+				<th>Cork</th>
 			</tr>
 			<tr>
 				<td>239</td>
@@ -890,18 +900,18 @@
 				<td>21:10</td>
 				<td>21:40</td>
 			</tr>
-			<tr>
+			<tr class="sticky s1">
 				<th colspan="5">To Cork</th>
 			</tr>
-			<tr>
+			<tr class="sticky s2">
 				<th colspan="5">Sunday</th>
 			</tr>
-			<tr>
-				<td>№</td>
-				<td>Bandon</td>
-				<td>Crossbarry</td>
-				<td>Innishannon</td>
-				<td>Cork</td>
+			<tr class="sticky s3">
+				<th>№</th>
+				<th>Bandon</th>
+				<th>Crossbarry</th>
+				<th>Innishannon</th>
+				<th>Cork</th>
 			</tr>
 			<tr>
 				<td>237</td>
