@@ -73,6 +73,20 @@
 				text-align: center;
 			}
 		}
+		@media print {
+			.sticky {
+				position: static;
+			}
+			.container{
+				flex-direction: column;
+			}
+			.container-2{
+				display: none;
+			}
+			.mobile{
+				display: none;
+			}
+		}
 	</style>
 </head>
 <body>
