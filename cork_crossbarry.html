@@ -10,12 +10,27 @@
 		a{
 			color: inherit;
 		}
+		button{
+			font-size: 1rem;
+		}
 		table{
 			border-collapse: collapse;
 			text-align: center;
 		}
 		table td, table th{
 			padding: 5px 10px;
+		}
+		table tr{
+			transition: background-color 0.15s ease;
+		}
+		table tr:not(:has(th)):nth-child(odd){
+			background-color: #f5f7fa;
+		}
+		table tr:not(:has(th)):nth-child(even){
+			background-color: #fff;
+		}
+		table tr:not(:has(th)):hover{
+			background-color: #dbeafe;
 		}
 		.container{
 			display: flex;
@@ -25,36 +40,61 @@
 			min-width: fit-content;
 		}
 		.container-2{
-			display: flex;
+			display: inline-flex;
 			gap: 1rem;
-			justify-content: center;
-			margin-bottom: 1rem;
-			flex-wrap: wrap;
+			margin-bottom: 2rem;
+			overflow-x: auto;
+			white-space: nowrap;
+			max-width: 100%;
+		}
+		.container-center{
+			text-align: center;
+		}
+		.mobile{
+			display: none;
+		}
+
+		@media (max-width: 800px){
+			.container {
+				flex-direction: column;
+			}
+			.mobile{
+				display: block;
+				text-align: center;
+			}
 		}
 	</style>
 </head>
 <body>
-	<div class="container-2">
-		<fieldset>
-			<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/239" target="_blank">Route 239</a></h2>
-			<h3 align="center">Cork — Butlerstown via Bandon</h3>
-		</fieldset>
-		<fieldset>
-			<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/237" target="_blank">Route 237</a></h2>
-			<h3 align="center">Cork — Goleen via Skibbereen</h3>
-		</fieldset>
-		<fieldset>
-			<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#skibbereen" target="_blank">Route 230</a></h2>
-			<h3 align="center">Cork — Skibbereen</h3>
-		</fieldset>
-		<fieldset>
-			<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#bantry" target="_blank">Route 229</a></h2>
-			<h3 align="center">Cork — Bantry</h3>
-		</fieldset>
+	<div class="container-center">
+		<div class="container-2">
+			<fieldset>
+				<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/239" target="_blank">Route 239</a></h2>
+				<h3 align="center">Cork — Butlerstown <wbr>via Bandon</h3>
+			</fieldset>
+			<fieldset>
+				<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/237" target="_blank">Route 237</a></h2>
+				<h3 align="center">Cork — Goleen <wbr>via Skibbereen</h3>
+			</fieldset>
+			<fieldset>
+				<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#skibbereen" target="_blank">Route 230</a></h2>
+				<h3 align="center">Cork — Skibbereen</h3>
+			</fieldset>
+			<fieldset>
+				<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#bantry" target="_blank">Route 229</a></h2>
+				<h3 align="center">Cork — Bantry</h3>
+			</fieldset>
+		</div>
 	</div>
 	
 	<div class="container">
-		<table border="1">
+		<div class="mobile">
+			<a href="#to_cork">
+				<button>To Cork</button>
+			</a>
+		</div>
+
+		<table border="1" id="from_cork">
 			<tr>
 				<th colspan="5">From Cork</th>
 			</tr>
@@ -502,8 +542,13 @@
 			</tr>
 		</table>
 
+		<div class="mobile">
+			<a href="#from_cork">
+				<button>From Cork</button>
+			</a>
+		</div>
 
-		<table border="1">
+		<table border="1" id="to_cork">
 			<tr>
 				<th colspan="5">To Cork</th>
 			</tr>
