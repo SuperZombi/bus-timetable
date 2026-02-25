@@ -158,8 +158,25 @@ function App() {
 											{operator.name}
 										</a>
 									</div>
-									{firstStop.from && <div><strong>From:</strong> {firstStop.from}</div>}
-									<div><strong>Destination:</strong> {destination.name}</div>
+									{firstStop.from && (
+										<div className="flex gap-1">
+											<strong>From:</strong>
+											{firstStop.link ? (
+												<a href={firstStop.link} target="_blank"
+													className="hover:underline"
+													style={{color: operator.color}}
+												>
+													{firstStop.from}
+												</a>
+											) : (
+												<span>{firstStop.from}</span>
+											)}
+										</div>
+									)}
+									<div className="flex gap-1">
+										<strong>Destination:</strong>
+										<span>{destination.name}</span>
+									</div>
 								</div>
 							)}
 						</div>

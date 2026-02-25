@@ -4,13 +4,15 @@
 			"id": "cork_parnell",
 			"city": "cork",
 			"name": "Cork",
-			"from": "Parnell Place"
+			"from": "Parnell Place",
+			"link": "https://maps.app.goo.gl/yJrHJwkbXgnSYaCC8"
 		},
 		{
 			"id": "cork_wcc",
 			"city": "cork",
 			"name": "Cork",
-			"from": "Patrick's Quay"
+			"from": "Patrick's Quay",
+			"link": "https://maps.app.goo.gl/JQdA3ArdsRM4ttAL6"
 		},
 		{ "id": "crossbarry", "name": "Crossbarry" },
 		{ "id": "innishannon", "name": "Innishannon" },
