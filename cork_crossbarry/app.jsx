@@ -20,21 +20,15 @@ function App() {
 	}, [])
 
 	
-
 	const toggleFilter = (type, value, inputType = "checkbox") => {
 	setFilters(prev => {
-
-			// RADIO логика
 			if (inputType === "radio") {
 				return {
 					...prev,
 					[type]: prev[type] === value ? null : value
 				}
 			}
-
-			// CHECKBOX логика
 			const exists = prev[type].includes(value)
-
 			return {
 				...prev,
 				[type]: exists
@@ -45,48 +39,49 @@ function App() {
 	}
 
 	const filteredTrips = useMemo(() => {
-
 		if (!data) return []
-
 		return data.trips.filter(trip => {
-
 			const route = data.routes.find(r => r.id === trip.routeId)
 
-			// DAYS (массив)
 			if (filters.days.length &&
 				!trip.days.some(d => filters.days.includes(d)))
 				return false
 
-			// ROUTES (массив)
 			if (filters.routes.length &&
 				!filters.routes.includes(route.number))
 				return false
 
-			// OPERATORS (массив)
 			if (filters.operators.length &&
 				!filters.operators.includes(route.operatorId))
 				return false
 
-			// VIA (radio → строка или null)
 			if (filters.via) {
 				const stops = Object.keys(trip.departures)
 				if (!stops.includes(filters.via))
 					return false
 			}
 
-			// FROM (radio → строка или null)
 			if (filters.from) {
 				const firstStopId = Object.keys(trip.departures)[0]
-
 				const firstStop = data.stops.find(
 					stop => stop.id === firstStopId
 				)
-
 				if (!firstStop || firstStop.city !== filters.from)
 					return false
 			}
 
 			return true
+		}).sort((a, b) => {
+
+			const getFirstTime = trip => {
+				const firstStopId = Object.keys(trip.departures)[0]
+				return trip.departures[firstStopId]
+			}
+
+			const timeA = getFirstTime(a)
+			const timeB = getFirstTime(b)
+
+			return timeA.localeCompare(timeB)
 		})
 
 	}, [filters, data])
@@ -111,6 +106,7 @@ function App() {
 					const route = data.routes.find(r => r.id === trip.routeId)
 					const operator = data.operators.find(o => o.id === route.operatorId)
 					const destination = data.destinations.find(d => d.id === trip.destination)
+					const firstStop = data.stops.find(s => s.id === Object.keys(trip.departures)[0])
 
 					return (
 						<div
@@ -123,11 +119,19 @@ function App() {
 							>
 
 								<div className="flex justify-between items-center mb-3">
-									<div className="text-lg font-bold">
+									<div className="text-lg font-bold"
+										style={{color: operator.color}}
+									>
 										Route {route.number}
 									</div>
-									<div className="text-xs text-gray-500">
-										{trip.days.join(", ")}
+									<div className="flex gap-1">
+										{trip.days.map(day => (
+											<span key={day} 
+												className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-200 text-gray-700 capitalize"
+											>
+												{day.slice(0, 3)}
+											</span>
+										))}
 									</div>
 								</div>
 
@@ -136,12 +140,7 @@ function App() {
 										const stop = data.stops.find(s => s.id === stopId)
 										return (
 											<div key={stopId} className="flex justify-between text-sm">
-												<span className="text-gray-600 flex gap-1 items-center">
-													<span>{stop.name}</span>
-													{stop.from && <span className="text-gray-400 text-xs">
-														({stop.from})
-													</span>}
-												</span>
+												<span className="text-gray-600">{stop.name}</span>
 												<span className="font-semibold">{time}</span>
 											</div>
 										)
@@ -159,6 +158,7 @@ function App() {
 											{operator.name}
 										</a>
 									</div>
+									{firstStop.from && <div><strong>From:</strong> {firstStop.from}</div>}
 									<div><strong>Destination:</strong> {destination.name}</div>
 								</div>
 							)}
@@ -227,7 +227,6 @@ function FilterBar({ data, filters, toggleFilter, openFilter, setOpenFilter }) {
 }
 
 function CheckboxList({ type, data, filters, toggleFilter }) {
-
 	let items = []
 	let inputType = "checkbox"
 
@@ -254,7 +253,15 @@ function CheckboxList({ type, data, filters, toggleFilter }) {
 	}
 
 	if (type === "days")
-		items = ["mon","tue","wed","thu","fri","sat","sun"]
+		items = [
+			{ id: "mon", label: "Monday" },
+			{ id: "tue", label: "Tuesday" },
+			{ id: "wed", label: "Wednesday" },
+			{ id: "thu", label: "Thursday" },
+			{ id: "fri", label: "Friday" },
+			{ id: "sat", label: "Saturday" },
+			{ id: "sun", label: "Sunday" }
+		]
 
 	return (
 		<div className="grid grid-cols-2 gap-3">
@@ -275,7 +282,6 @@ function CheckboxList({ type, data, filters, toggleFilter }) {
 							checked={checked}
 							onClick={() => {
 								if (inputType === "radio" && checked) {
-									// если уже выбран → снять
 									toggleFilter(type, null, inputType)
 								} else {
 									toggleFilter(type, value, inputType)
