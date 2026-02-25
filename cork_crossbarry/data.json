@@ -144,7 +144,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "06:30",
+				"cork_parnell": "06:30",
 				"innishannon": "07:03",
 				"bandon": "07:11"
 			}
@@ -155,7 +155,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "07:40",
+				"cork_parnell": "07:40",
 				"innishannon": "08:20",
 				"bandon": "08:27"
 			}
@@ -166,7 +166,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "13:00",
+				"cork_parnell": "13:00",
 				"crossbarry": "13:38",
 				"bandon": "13:54"
 			}
@@ -177,7 +177,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "butlerstown",
 			"departures": {
-				"cork": "15:45",
+				"cork_parnell": "15:45",
 				"crossbarry": "16:28",
 				"bandon": "16:45"
 			}
@@ -188,7 +188,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "butlerstown",
 			"departures": {
-				"cork": "17:15",
+				"cork_parnell": "17:15",
 				"innishannon": "18:10",
 				"bandon": "18:24"
 			}
@@ -199,7 +199,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "17:45",
+				"cork_parnell": "17:45",
 				"crossbarry": "18:25",
 				"bandon": "18:37"
 			}
@@ -210,7 +210,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "22:45",
+				"cork_parnell": "22:45",
 				"innishannon": "23:17",
 				"bandon": "23:25"
 			}
@@ -221,7 +221,7 @@
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "11:00",
+				"cork_parnell": "11:00",
 				"innishannon": "11:36",
 				"bandon": "11:43"
 			}
@@ -232,7 +232,7 @@
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "13:00",
+				"cork_parnell": "13:00",
 				"innishannon": "13:47",
 				"bandon": "13:55"
 			}
@@ -243,7 +243,7 @@
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "15:30",
+				"cork_parnell": "15:30",
 				"innishannon": "16:11",
 				"bandon": "16:18"
 			}
@@ -254,7 +254,7 @@
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "17:15",
+				"cork_parnell": "17:15",
 				"innishannon": "17:58",
 				"bandon": "18:06"
 			}
@@ -265,7 +265,7 @@
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "18:00",
+				"cork_parnell": "18:00",
 				"crossbarry": "18:35",
 				"bandon": "18:45"
 			}
@@ -276,7 +276,7 @@
 			"days": ["sun"],
 			"destination": "bandon",
 			"departures": {
-				"cork": "22:45",
+				"cork_parnell": "22:45",
 				"innishannon": "23:14",
 				"bandon": "23:23"
 			}
@@ -289,7 +289,7 @@
 			"departures": {
 				"bandon": "06:50",
 				"innishannon": "06:58",
-				"cork": "07:54"
+				"cork_parnell": "07:54"
 			}
 		},
 		{
@@ -300,7 +300,7 @@
 			"departures": {
 				"bandon": "07:17",
 				"crossbarry": "07:32",
-				"cork": "08:35"
+				"cork_parnell": "08:35"
 			}
 		},
 		{
@@ -311,7 +311,7 @@
 			"departures": {
 				"bandon": "08:03",
 				"innishannon": "08:11",
-				"cork": "09:12"
+				"cork_parnell": "09:12"
 			}
 		},
 		{
@@ -322,7 +322,7 @@
 			"departures": {
 				"bandon": "10:00",
 				"innishannon": "10:08",
-				"cork": "10:50"
+				"cork_parnell": "10:50"
 			}
 		},
 		{
@@ -333,7 +333,7 @@
 			"departures": {
 				"bandon": "12:00",
 				"innishannon": "12:08",
-				"cork": "13:07"
+				"cork_parnell": "13:07"
 			}
 		},
 		{
@@ -344,7 +344,7 @@
 			"departures": {
 				"bandon": "14:10",
 				"innishannon": "14:18",
-				"cork": "15:16"
+				"cork_parnell": "15:16"
 			}
 		},
 		{
@@ -355,7 +355,7 @@
 			"departures": {
 				"bandon": "16:45",
 				"innishannon": "16:53",
-				"cork": "17:49"
+				"cork_parnell": "17:49"
 			}
 		},
 		{
@@ -366,7 +366,7 @@
 			"departures": {
 				"bandon": "07:45",
 				"innishannon": "07:54",
-				"cork": "08:31"
+				"cork_parnell": "08:31"
 			}
 		},
 		{
@@ -377,7 +377,7 @@
 			"departures": {
 				"bandon": "12:00",
 				"crossbarry": "12:16",
-				"cork": "13:05"
+				"cork_parnell": "13:05"
 			}
 		},
 		{
@@ -388,7 +388,7 @@
 			"departures": {
 				"bandon": "13:45",
 				"innishannon": "13:59",
-				"cork": "14:48"
+				"cork_parnell": "14:48"
 			}
 		},
 		{
@@ -399,7 +399,7 @@
 			"departures": {
 				"bandon": "16:45",
 				"innishannon": "16:55",
-				"cork": "17:46"
+				"cork_parnell": "17:46"
 			}
 		},
 		{
@@ -410,7 +410,7 @@
 			"departures": {
 				"bandon": "23:25",
 				"innishannon": "23:35",
-				"cork": "00:15"
+				"cork_parnell": "00:15"
 			}
 		},
 		{
@@ -419,7 +419,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "schull",
 			"departures": {
-				"cork": "09:00",
+				"cork_parnell": "09:00",
 				"innishannon": "09:38",
 				"bandon": "09:50"
 			}
@@ -430,7 +430,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "12:00",
+				"cork_parnell": "12:00",
 				"innishannon": "12:39",
 				"bandon": "12:50"
 			}
@@ -441,7 +441,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "goleen",
 			"departures": {
-				"cork": "15:00",
+				"cork_parnell": "15:00",
 				"innishannon": "15:41",
 				"bandon": "15:50"
 			}
@@ -452,7 +452,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "goleen",
 			"departures": {
-				"cork": "16:30",
+				"cork_parnell": "16:30",
 				"innishannon": "17:28",
 				"bandon": "17:37"
 			}
@@ -463,7 +463,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "21:00",
+				"cork_parnell": "21:00",
 				"innishannon": "21:35",
 				"bandon": "21:46"
 			}
@@ -474,7 +474,7 @@
 			"days": ["sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "11:00",
+				"cork_parnell": "11:00",
 				"innishannon": "11:40",
 				"bandon": "11:50"
 			}
@@ -485,7 +485,7 @@
 			"days": ["sat","sun"],
 			"destination": "goleen",
 			"departures": {
-				"cork": "17:00",
+				"cork_parnell": "17:00",
 				"innishannon": "17:40",
 				"bandon": "17:49"
 			}
@@ -498,7 +498,7 @@
 			"departures": {
 				"bandon": "07:31",
 				"innishannon": "07:41",
-				"cork": "08:37"
+				"cork_parnell": "08:37"
 			}
 		},
 		{
@@ -509,7 +509,7 @@
 			"departures": {
 				"bandon": "09:43",
 				"crossbarry": "09:55",
-				"cork": "10:48"
+				"cork_parnell": "10:48"
 			}
 		},
 		{
@@ -520,7 +520,7 @@
 			"departures": {
 				"bandon": "10:06",
 				"innishannon": "10:15",
-				"cork": "11:15"
+				"cork_parnell": "11:15"
 			}
 		},
 		{
@@ -531,7 +531,7 @@
 			"departures": {
 				"bandon": "12:18",
 				"innishannon": "12:27",
-				"cork": "13:17"
+				"cork_parnell": "13:17"
 			}
 		},
 		{
@@ -542,7 +542,7 @@
 			"departures": {
 				"bandon": "15:01",
 				"innishannon": "15:10",
-				"cork": "15:54"
+				"cork_parnell": "15:54"
 			}
 		},
 		{
@@ -553,7 +553,7 @@
 			"departures": {
 				"bandon": "18:06",
 				"innishannon": "18:15",
-				"cork": "19:00"
+				"cork_parnell": "19:00"
 			}
 		},
 		{
@@ -564,7 +564,7 @@
 			"departures": {
 				"bandon": "20:03",
 				"innishannon": "20:12",
-				"cork": "21:09"
+				"cork_parnell": "21:09"
 			}
 		},
 		{
@@ -575,7 +575,7 @@
 			"departures": {
 				"bandon": "08:05",
 				"innishannon": "08:13",
-				"cork": "09:02"
+				"cork_parnell": "09:02"
 			}
 		},
 		{
@@ -586,7 +586,7 @@
 			"departures": {
 				"bandon": "14:37",
 				"innishannon": "14:45",
-				"cork": "15:41"
+				"cork_parnell": "15:41"
 			}
 		},
 		{
@@ -595,7 +595,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "08:30",
+				"cork_parnell": "08:30",
 				"innishannon": "09:14",
 				"bandon": "09:27"
 			}
@@ -606,7 +606,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "10:30",
+				"cork_parnell": "10:30",
 				"innishannon": "11:09",
 				"bandon": "11:20"
 			}
@@ -617,7 +617,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "12:30",
+				"cork_parnell": "12:30",
 				"innishannon": "13:10",
 				"bandon": "13:21"
 			}
@@ -628,7 +628,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "14:30",
+				"cork_parnell": "14:30",
 				"innishannon": "15:12",
 				"bandon": "15:25"
 			}
@@ -639,7 +639,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "16:00",
+				"cork_parnell": "16:00",
 				"innishannon": "16:54",
 				"bandon": "17:06"
 			}
@@ -650,7 +650,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "18:30",
+				"cork_parnell": "18:30",
 				"innishannon": "19:08",
 				"bandon": "19:17"
 			}
@@ -661,7 +661,7 @@
 			"days": ["sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "13:30",
+				"cork_parnell": "13:30",
 				"innishannon": "14:04",
 				"bandon": "14:15"
 			}
@@ -672,7 +672,7 @@
 			"days": ["sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "16:30",
+				"cork_parnell": "16:30",
 				"innishannon": "17:11",
 				"bandon": "17:20"
 			}
@@ -685,7 +685,7 @@
 			"departures": {
 				"bandon": "08:08",
 				"innishannon": "08:20",
-				"cork": "09:12"
+				"cork_parnell": "09:12"
 			}
 		},
 		{
@@ -696,7 +696,7 @@
 			"departures": {
 				"bandon": "09:41",
 				"innishannon": "09:50",
-				"cork": "10:36"
+				"cork_parnell": "10:36"
 			}
 		},
 		{
@@ -707,7 +707,7 @@
 			"departures": {
 				"bandon": "11:06",
 				"innishannon": "11:15",
-				"cork": "12:02"
+				"cork_parnell": "12:02"
 			}
 		},
 		{
@@ -718,7 +718,7 @@
 			"departures": {
 				"bandon": "12:35",
 				"innishannon": "12:44",
-				"cork": "13:34"
+				"cork_parnell": "13:34"
 			}
 		},
 		{
@@ -729,7 +729,7 @@
 			"departures": {
 				"bandon": "14:07",
 				"innishannon": "14:15",
-				"cork": "15:00"
+				"cork_parnell": "15:00"
 			}
 		},
 		{
@@ -740,7 +740,7 @@
 			"departures": {
 				"bandon": "15:52",
 				"innishannon": "16:02",
-				"cork": "16:51"
+				"cork_parnell": "16:51"
 			}
 		},
 		{
@@ -751,7 +751,7 @@
 			"departures": {
 				"bandon": "19:31",
 				"innishannon": "19:40",
-				"cork": "20:23"
+				"cork_parnell": "20:23"
 			}
 		},
 		{
@@ -762,7 +762,7 @@
 			"departures": {
 				"bandon": "14:33",
 				"innishannon": "14:41",
-				"cork": "15:37"
+				"cork_parnell": "15:37"
 			}
 		},
 		{
@@ -773,7 +773,7 @@
 			"departures": {
 				"bandon": "15:36",
 				"innishannon": "15:44",
-				"cork": "16:22"
+				"cork_parnell": "16:22"
 			}
 		},
 		{
@@ -784,7 +784,7 @@
 			"departures": {
 				"bandon": "11:34",
 				"innishannon": "11:45",
-				"cork": "12:33"
+				"cork_parnell": "12:33"
 			}
 		},
 		{
@@ -795,7 +795,7 @@
 			"departures": {
 				"bandon": "16:33",
 				"innishannon": "16:43",
-				"cork": "17:25"
+				"cork_parnell": "17:25"
 			}
 		},
 		{
@@ -806,7 +806,7 @@
 			"departures": {
 				"bandon": "18:09",
 				"innishannon": "18:19",
-				"cork": "19:06"
+				"cork_parnell": "19:06"
 			}
 		},
 		{
@@ -815,7 +815,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "11:15",
+				"cork_wcc": "11:15",
 				"innishannon": "11:50",
 				"bandon": "12:00"
 			}
@@ -826,7 +826,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "16:45",
+				"cork_wcc": "16:45",
 				"innishannon": "17:25",
 				"bandon": "17:35"
 			}
@@ -837,7 +837,7 @@
 			"days": ["sun"],
 			"destination": "bantry",
 			"departures": {
-				"cork": "18:10",
+				"cork_wcc": "18:10",
 				"innishannon": "18:45",
 				"bandon": "18:55"
 			}
@@ -850,7 +850,7 @@
 			"departures": {
 				"bandon": "10:15",
 				"innishannon": "10:25",
-				"cork": "11:00"
+				"cork_wcc": "11:00"
 			}
 		},
 		{
@@ -861,7 +861,7 @@
 			"departures": {
 				"bandon": "15:15",
 				"innishannon": "15:25",
-				"cork": "16:00"
+				"cork_wcc": "16:00"
 			}
 		},
 		{
@@ -872,7 +872,7 @@
 			"departures": {
 				"bandon": "17:10",
 				"innishannon": "17:20",
-				"cork": "17:55"
+				"cork_wcc": "17:55"
 			}
 		},
 		{
@@ -881,7 +881,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "08:00",
+				"cork_wcc": "08:00",
 				"innishannon": "08:35",
 				"bandon": "08:45"
 			}
@@ -892,7 +892,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "10:00",
+				"cork_wcc": "10:00",
 				"innishannon": "10:35",
 				"bandon": "10:45"
 			}
@@ -903,7 +903,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "11:00",
+				"cork_wcc": "11:00",
 				"innishannon": "11:35",
 				"bandon": "11:45"
 			}
@@ -914,7 +914,7 @@
 			"days": ["sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "12:00",
+				"cork_wcc": "12:00",
 				"innishannon": "12:35",
 				"bandon": "12:45"
 			}
@@ -925,7 +925,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "13:00",
+				"cork_wcc": "13:00",
 				"innishannon": "13:35",
 				"bandon": "13:45"
 			}
@@ -936,7 +936,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "14:00",
+				"cork_wcc": "14:00",
 				"innishannon": "14:35",
 				"bandon": "14:45"
 			}
@@ -947,7 +947,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "16:00",
+				"cork_wcc": "16:00",
 				"innishannon": "16:40",
 				"bandon": "16:50"
 			}
@@ -958,7 +958,7 @@
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "17:00",
+				"cork_wcc": "17:00",
 				"innishannon": "17:40",
 				"bandon": "17:50"
 			}
@@ -969,7 +969,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "18:00",
+				"cork_wcc": "18:00",
 				"innishannon": "18:35",
 				"bandon": "18:45"
 			}
@@ -980,7 +980,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "20:00",
+				"cork_wcc": "20:00",
 				"innishannon": "20:30",
 				"bandon": "20:40"
 			}
@@ -991,7 +991,7 @@
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
-				"cork": "22:00",
+				"cork_wcc": "22:00",
 				"innishannon": "22:30",
 				"bandon": "22:40"
 			}
@@ -1004,7 +1004,7 @@
 			"departures": {
 				"bandon": "07:00",
 				"innishannon": "07:10",
-				"cork": "07:50"
+				"cork_wcc": "07:50"
 			}
 		},
 		{
@@ -1015,7 +1015,7 @@
 			"departures": {
 				"bandon": "08:00",
 				"innishannon": "08:10",
-				"cork": "08:50"
+				"cork_wcc": "08:50"
 			}
 		},
 		{
@@ -1026,7 +1026,7 @@
 			"departures": {
 				"bandon": "09:00",
 				"innishannon": "09:15",
-				"cork": "09:50"
+				"cork_wcc": "09:50"
 			}
 		},
 		{
@@ -1037,7 +1037,7 @@
 			"departures": {
 				"bandon": "11:00",
 				"innishannon": "11:15",
-				"cork": "11:50"
+				"cork_wcc": "11:50"
 			}
 		},
 		{
@@ -1048,7 +1048,7 @@
 			"departures": {
 				"bandon": "12:00",
 				"innishannon": "12:15",
-				"cork": "12:50"
+				"cork_wcc": "12:50"
 			}
 		},
 		{
@@ -1059,7 +1059,7 @@
 			"departures": {
 				"bandon": "13:00",
 				"innishannon": "13:15",
-				"cork": "13:50"
+				"cork_wcc": "13:50"
 			}
 		},
 		{
@@ -1070,7 +1070,7 @@
 			"departures": {
 				"bandon": "14:00",
 				"innishannon": "14:15",
-				"cork": "14:50"
+				"cork_wcc": "14:50"
 			}
 		},
 		{
@@ -1081,7 +1081,7 @@
 			"departures": {
 				"bandon": "16:00",
 				"innishannon": "16:15",
-				"cork": "16:50"
+				"cork_wcc": "16:50"
 			}
 		},
 		{
@@ -1092,7 +1092,7 @@
 			"departures": {
 				"bandon": "19:00",
 				"innishannon": "19:15",
-				"cork": "19:50"
+				"cork_wcc": "19:50"
 			}
 		},
 		{
@@ -1103,7 +1103,7 @@
 			"departures": {
 				"bandon": "21:00",
 				"innishannon": "21:10",
-				"cork": "21:40"
+				"cork_wcc": "21:40"
 			}
 		}
 	]
