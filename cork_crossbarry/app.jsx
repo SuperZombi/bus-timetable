@@ -92,7 +92,12 @@ const App = ()=>{
 			/>
 			{data ? (
 				<div className="px-4 mt-4 space-y-4">
-					{console.log(filteredTrips.length)}
+					{filteredTrips.length === 0 && (
+						<div className="bg-white rounded-2xl shadow-sm border p-6 text-center text-sm text-gray-600 flex flex-col gap-2">
+							<span>Nothing found</span>
+							<span>¯\_(ツ)_/¯</span>
+						</div>
+					)}
 					{filteredTrips.map(trip => {
 						const route = data.routes.find(r => r.id === trip.routeId)
 						const operator = data.operators.find(o => o.id === route.operatorId)
