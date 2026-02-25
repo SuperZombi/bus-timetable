@@ -120,6 +120,22 @@
 			"link": "https://westcorkconnect.ie/timetable/#bantry",
 			"stops": ["bandon", "innishannon", "cork_wcc"]
 		},
+		{
+			"id": "230",
+			"number": "230",
+			"variant": "I",
+			"operatorId": "westcork",
+			"link": "https://westcorkconnect.ie/timetable/#skibbereen",
+			"stops": ["cork_wcc", "innishannon", "bandon"]
+		},
+		{
+			"id": "230-return",
+			"number": "230",
+			"variant": "I",
+			"operatorId": "westcork",
+			"link": "https://westcorkconnect.ie/timetable/#skibbereen",
+			"stops": ["bandon", "innishannon", "cork_wcc"]
+		}
 	],
 	"trips": [
 		{
@@ -859,5 +875,236 @@
 				"cork": "17:55"
 			}
 		},
+		{
+			"id": "68",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "08:00",
+				"innishannon": "08:35",
+				"bandon": "08:45"
+			}
+		},
+		{
+			"id": "69",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "10:00",
+				"innishannon": "10:35",
+				"bandon": "10:45"
+			}
+		},
+		{
+			"id": "70",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "11:00",
+				"innishannon": "11:35",
+				"bandon": "11:45"
+			}
+		},
+		{
+			"id": "71",
+			"routeId": "230",
+			"days": ["sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "12:00",
+				"innishannon": "12:35",
+				"bandon": "12:45"
+			}
+		},
+		{
+			"id": "72",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "13:00",
+				"innishannon": "13:35",
+				"bandon": "13:45"
+			}
+		},
+		{
+			"id": "73",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "14:00",
+				"innishannon": "14:35",
+				"bandon": "14:45"
+			}
+		},
+		{
+			"id": "74",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "16:00",
+				"innishannon": "16:40",
+				"bandon": "16:50"
+			}
+		},
+		{
+			"id": "75",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "17:00",
+				"innishannon": "17:40",
+				"bandon": "17:50"
+			}
+		},
+		{
+			"id": "76",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "18:00",
+				"innishannon": "18:35",
+				"bandon": "18:45"
+			}
+		},
+		{
+			"id": "77",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "20:00",
+				"innishannon": "20:30",
+				"bandon": "20:40"
+			}
+		},
+		{
+			"id": "78",
+			"routeId": "230",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "skibbereen",
+			"departures": {
+				"cork": "22:00",
+				"innishannon": "22:30",
+				"bandon": "22:40"
+			}
+		},
+		{
+			"id": "79",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "07:00",
+				"innishannon": "07:10",
+				"cork": "07:50"
+			}
+		},
+		{
+			"id": "80",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "08:00",
+				"innishannon": "08:10",
+				"cork": "08:50"
+			}
+		},
+		{
+			"id": "81",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "09:00",
+				"innishannon": "09:15",
+				"cork": "09:50"
+			}
+		},
+		{
+			"id": "82",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "11:00",
+				"innishannon": "11:15",
+				"cork": "11:50"
+			}
+		},
+		{
+			"id": "83",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "12:00",
+				"innishannon": "12:15",
+				"cork": "12:50"
+			}
+		},
+		{
+			"id": "84",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "13:00",
+				"innishannon": "13:15",
+				"cork": "13:50"
+			}
+		},
+		{
+			"id": "85",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "14:00",
+				"innishannon": "14:15",
+				"cork": "14:50"
+			}
+		},
+		{
+			"id": "86",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "16:00",
+				"innishannon": "16:15",
+				"cork": "16:50"
+			}
+		},
+		{
+			"id": "87",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "19:00",
+				"innishannon": "19:15",
+				"cork": "19:50"
+			}
+		},
+		{
+			"id": "88",
+			"routeId": "230-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "21:00",
+				"innishannon": "21:10",
+				"cork": "21:40"
+			}
+		}
 	]
 }
