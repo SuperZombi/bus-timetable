@@ -89,7 +89,7 @@ function App() {
 	if (!data) return <div className="p-6">Loading...</div>
 
 	return (
-		<div className="max-w-md mx-auto pb-10">
+		<div className="max-w-xl mx-auto pb-10">
 
 			<Header />
 
@@ -117,14 +117,13 @@ function App() {
 								onClick={() => setExpandedId(expandedId === trip.id ? null : trip.id)}
 								className="cursor-pointer"
 							>
-
-								<div className="flex justify-between items-center mb-3">
+								<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
 									<div className="text-lg font-bold"
 										style={{color: operator.color}}
 									>
 										Route {route.number}
 									</div>
-									<div className="flex gap-1">
+									<div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
 										{trip.days.map(day => (
 											<span key={day} 
 												className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-200 text-gray-700 capitalize"
@@ -134,7 +133,6 @@ function App() {
 										))}
 									</div>
 								</div>
-
 								<div className="space-y-1">
 									{Object.entries(trip.departures).map(([stopId, time]) => {
 										const stop = data.stops.find(s => s.id === stopId)
