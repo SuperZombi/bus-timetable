@@ -1,9 +1,22 @@
 {
 	"stops": [
-		{ "id": "cork", "name": "Cork" },
-		{ "id": "crossbarry", "name": "Crossbarry" },
-		{ "id": "innishannon", "name": "Innishannon" },
-		{ "id": "bandon", "name": "Bandon" }
+		{
+			"id": "cork_parnell",
+			"name": "Parnell Place",
+			"city": "cork"
+		},
+		{
+			"id": "cork_wcc",
+			"name": "Patrick's Quay",
+			"city": "cork"
+		},
+		{ "id": "crossbarry", "name": "Crossbarry", "city": "crossbarry" },
+		{ "id": "innishannon", "name": "Innishannon", "city": "innishannon" },
+		{
+			"id": "bandon",
+			"name": "Glasslinn Road",
+			"city": "bandon"
+		}
 	],
 	"operators": [
 		{ "id": "buseireann", "name": "Bus Éireann" },
@@ -25,7 +38,7 @@
 			"variant": "C",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["cork", "crossbarry", "bandon"]
+			"stops": ["cork_parnell", "crossbarry", "bandon"]
 		},
 		{
 			"id": "239I",
@@ -33,7 +46,7 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["cork", "innishannon", "bandon"]
+			"stops": ["cork_parnell", "innishannon", "bandon"]
 		},
 		{
 			"id": "239C-return",
@@ -41,7 +54,7 @@
 			"variant": "C",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["bandon", "crossbarry", "cork"]
+			"stops": ["bandon", "crossbarry", "cork_parnell"]
 		},
 		{
 			"id": "239I-return",
@@ -49,7 +62,7 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["bandon", "innishannon", "cork"]
+			"stops": ["bandon", "innishannon", "cork_parnell"]
 		},
 		{
 			"id": "237I",
@@ -57,7 +70,7 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["bandon", "innishannon", "cork"]
+			"stops": ["cork_parnell", "innishannon", "bandon"]
 		},
 		{
 			"id": "237C-return",
@@ -65,7 +78,7 @@
 			"variant": "C",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["bandon", "crossbarry", "cork"]
+			"stops": ["bandon", "crossbarry", "cork_parnell"]
 		},
 		{
 			"id": "237I-return",
@@ -73,7 +86,7 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["bandon", "innishannon", "cork"]
+			"stops": ["bandon", "innishannon", "cork_parnell"]
 		},
 		{
 			"id": "236I",
@@ -81,7 +94,7 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/236",
-			"stops": ["bandon", "innishannon", "cork"]
+			"stops": ["cork_parnell", "innishannon", "bandon"]
 		},
 		{
 			"id": "236I-return",
@@ -89,7 +102,23 @@
 			"variant": "I",
 			"operatorId": "buseireann",
 			"link": "https://www.buseireann.ie/routes-and-timetables/236",
-			"stops": ["bandon", "innishannon", "cork"]
+			"stops": ["bandon", "innishannon", "cork_parnell"]
+		},
+		{
+			"id": "229",
+			"number": "229",
+			"variant": "I",
+			"operatorId": "westcork",
+			"link": "https://westcorkconnect.ie/timetable/#bantry",
+			"stops": ["cork_wcc", "innishannon", "bandon"]
+		},
+		{
+			"id": "229-return",
+			"number": "229",
+			"variant": "I",
+			"operatorId": "westcork",
+			"link": "https://westcorkconnect.ie/timetable/#bantry",
+			"stops": ["bandon", "innishannon", "cork_wcc"]
 		},
 	],
 	"trips": [
@@ -762,6 +791,72 @@
 				"bandon": "18:09",
 				"innishannon": "18:19",
 				"cork": "19:06"
+			}
+		},
+		{
+			"id": "62",
+			"routeId": "229",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "bantry",
+			"departures": {
+				"cork": "11:15",
+				"innishannon": "11:50",
+				"bandon": "12:00"
+			}
+		},
+		{
+			"id": "63",
+			"routeId": "229",
+			"days": ["mon","tue","wed","thu","fri","sat"],
+			"destination": "bantry",
+			"departures": {
+				"cork": "16:45",
+				"innishannon": "17:25",
+				"bandon": "17:35"
+			}
+		},
+		{
+			"id": "64",
+			"routeId": "229",
+			"days": ["sun"],
+			"destination": "bantry",
+			"departures": {
+				"cork": "18:10",
+				"innishannon": "18:45",
+				"bandon": "18:55"
+			}
+		},
+		{
+			"id": "65",
+			"routeId": "229-return",
+			"days": ["mon","tue","wed","thu","fri","sat","sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "10:15",
+				"innishannon": "10:25",
+				"cork": "11:00"
+			}
+		},
+		{
+			"id": "66",
+			"routeId": "229-return",
+			"days": ["mon","tue","wed","thu","fri","sat"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "15:15",
+				"innishannon": "15:25",
+				"cork": "16:00"
+			}
+		},
+		{
+			"id": "67",
+			"routeId": "229-return",
+			"days": ["sun"],
+			"destination": "cork",
+			"departures": {
+				"bandon": "17:10",
+				"innishannon": "17:20",
+				"cork": "17:55"
 			}
 		},
 	]
