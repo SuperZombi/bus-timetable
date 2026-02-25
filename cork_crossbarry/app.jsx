@@ -236,25 +236,25 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		if (Array.isArray(value)) return value.length > 0
 		return Boolean(value)
 	}
-	const filterButton = (label, key) => (
+	const filterButton = (label, key, icon=null) => (
 		<button
 			onClick={() => setOpenFilter(openFilter === key ? null : key)}
-			className={`px-4 py-2 rounded-full text-sm whitespace-nowrap border
+			className={`flex gap-2 items-center px-4 py-2 rounded-full text-sm whitespace-nowrap border
 				${isActive(filters[key])
 					? "bg-black text-white"
 					: "bg-white text-gray-700"}`}
 		>
-			{label}
+			{icon}<span>{label}</span>
 		</button>
 	)
 	return (
 		<div className="relative select-none" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto px-4 py-3 bg-gray-50 border-b">
-				{filterButton("From", "from")}
-				{filterButton("Via", "via")}
-				{filterButton("Days", "days")}
-				{filterButton("Routes", "routes")}
-				{filterButton("Operators", "operators")}
+				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
+				{filterButton("Via", "via", <i className="fa-solid fa-plane"/>)}
+				{filterButton("Days", "days", <i className="fa-solid fa-calendar"/>)}
+				{filterButton("Routes", "routes", <i className="fa-solid fa-compass"/>)}
+				{filterButton("Operators", "operators", <i className="fa-solid fa-bus-simple"/>)}
 			</div>
 			{openFilter && (
 				<div className="absolute w-full bg-white shadow-lg border-b z-30 p-4 sm:rounded-b-lg">
