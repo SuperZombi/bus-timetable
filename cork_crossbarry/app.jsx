@@ -119,7 +119,7 @@ const App = ()=>{
 										>
 											Route {route.number}
 										</div>
-										<div className="flex flex-wrap gap-1 mt-2 sm:mt-0">
+										<div className="flex flex-wrap gap-1 mt-2 sm:mt-0 select-none">
 											{trip.days.map(day => (
 												<span key={day} 
 													className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-200 text-gray-700 capitalize"
@@ -145,6 +145,9 @@ const App = ()=>{
 									<div className="mt-4 pt-3 border-t text-sm text-gray-600 space-y-1">
 										<div className="flex gap-1">
 											<strong>Operator:</strong>
+											{operator.img && (
+												<img src={operator.img} width="48" className="select-none" draggable={false}/>
+											)}
 											<a className="hover:underline" href={route.link} target="_blank"
 												style={{color: operator.color}}
 											>
@@ -245,7 +248,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		</button>
 	)
 	return (
-		<div className="relative" ref={filterRef}>
+		<div className="relative select-none" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto px-4 py-3 bg-gray-50 border-b">
 				{filterButton("From", "from")}
 				{filterButton("Via", "via")}
@@ -272,10 +275,21 @@ const CheckboxList = ({ type, data, filters, toggleFilter }) => {
 	let inputType = "checkbox"
 
 	if (type === "routes")
-		items = [...new Set(data?.routes.map(r => r.number))]
+		items = data?.routes.filter((route, index, self) =>
+			self.findIndex(r => r.number === route.number) === index
+		).map(route => {
+			const operator = data.operators.find(op => op.id === route.operatorId);
+			return {
+				id: route.id,
+				label: route.number,
+				color: operator?.color
+			}
+		}) || []
 
 	if (type === "operators")
-		items = data?.operators.map(o => ({ id: o.id, label: o.name })) || []
+		items = data?.operators.map(o => (
+			{ id: o.id, label: o.name, img: o.img, color: o.color }
+		)) || []
 
 	if (type === "via") {
 		items = [
@@ -300,8 +314,8 @@ const CheckboxList = ({ type, data, filters, toggleFilter }) => {
 			{ id: "wed", label: "Wednesday" },
 			{ id: "thu", label: "Thursday" },
 			{ id: "fri", label: "Friday" },
-			{ id: "sat", label: "Saturday" },
-			{ id: "sun", label: "Sunday" }
+			{ id: "sat", label: "Saturday", color: "red" },
+			{ id: "sun", label: "Sunday", color: "red" }
 		]
 
 	return (
@@ -309,6 +323,8 @@ const CheckboxList = ({ type, data, filters, toggleFilter }) => {
 			{items.map(item => {
 				const value = typeof item === "string" ? item : item.id
 				const label = typeof item === "string" ? item : item.label
+				const image = typeof item === "string" ? null : item.img
+				const color = typeof item === "string" ? null : item.color
 
 				const checked =
 					inputType === "checkbox"
@@ -330,7 +346,8 @@ const CheckboxList = ({ type, data, filters, toggleFilter }) => {
 							}}
 							readOnly
 						/>
-						<span>{label}</span>
+						{image && <img src={image} width="48" draggable={false}/>}
+						<span style={{color: color}}>{label}</span>
 					</label>
 				)
 			})}

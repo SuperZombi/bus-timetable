@@ -24,8 +24,18 @@
 		}
 	],
 	"operators": [
-		{ "id": "buseireann", "name": "Bus Éireann", "color": "#a6192e" },
-		{ "id": "westcork", "name": "West Cork Connect", "color": "#0170ea" }
+		{
+			"id": "buseireann",
+			"name": "Bus Éireann",
+			"color": "#a6192e",
+			"img": "./img/bus_eireann_logo.svg"
+		},
+		{
+			"id": "westcork",
+			"name": "West Cork Connect",
+			"color": "#0170ea",
+			"img": "./img/west-cork-connect-logo.png"
+		}
 	],
 	"destinations": [
 		{ "id": "cork", "name": "Corcaigh" },
