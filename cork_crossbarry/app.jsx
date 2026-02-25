@@ -164,13 +164,22 @@ function App() {
 											{firstStop.link ? (
 												<a href={firstStop.link} target="_blank"
 													className="hover:underline"
-													style={{color: operator.color}}
 												>
 													{firstStop.from}
 												</a>
 											) : (
 												<span>{firstStop.from}</span>
 											)}
+										</div>
+									)}
+									{firstStop.city === "cork" && (
+										<div className="flex gap-1">
+											<strong>Also:</strong>
+											<a href="https://maps.app.goo.gl/xhcMxbLtw9wkx8b47" target="_blank"
+												className="hover:underline"
+											>
+												Washington Street
+											</a>
 										</div>
 									)}
 									<div className="flex gap-1">
