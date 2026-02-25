@@ -245,7 +245,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		</button>
 	)
 	return (
-		<div className="relative">
+		<div className="relative" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto px-4 py-3 bg-gray-50 border-b">
 				{filterButton("From", "from")}
 				{filterButton("Via", "via")}
@@ -254,7 +254,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 				{filterButton("Operators", "operators")}
 			</div>
 			{openFilter && (
-				<div className="absolute w-full bg-white shadow-lg border-b z-30 p-4 sm:rounded-b-lg" ref={filterRef}>
+				<div className="absolute w-full bg-white shadow-lg border-b z-30 p-4 sm:rounded-b-lg">
 					<CheckboxList
 						type={openFilter}
 						data={data}
