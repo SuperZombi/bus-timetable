@@ -2,25 +2,28 @@
 	"stops": [
 		{
 			"id": "cork_parnell",
-			"name": "Parnell Place",
-			"city": "cork"
+			"city": "cork",
+			"name": "Cork",
+			"from": "Parnell Place"
 		},
 		{
 			"id": "cork_wcc",
-			"name": "Patrick's Quay",
-			"city": "cork"
+			"city": "cork",
+			"name": "Cork",
+			"from": "Patrick's Quay"
 		},
-		{ "id": "crossbarry", "name": "Crossbarry", "city": "crossbarry" },
-		{ "id": "innishannon", "name": "Innishannon", "city": "innishannon" },
+		{ "id": "crossbarry", "name": "Crossbarry" },
+		{ "id": "innishannon", "name": "Innishannon" },
 		{
 			"id": "bandon",
-			"name": "Glasslinn Road",
-			"city": "bandon"
+			"city": "bandon",
+			"name": "Bandon",
+			"from": "Glasslinn Road"
 		}
 	],
 	"operators": [
-		{ "id": "buseireann", "name": "Bus Éireann" },
-		{ "id": "westcork", "name": "West Cork Connect" }
+		{ "id": "buseireann", "name": "Bus Éireann", "color": "#a6192e" },
+		{ "id": "westcork", "name": "West Cork Connect", "color": "#0170ea" }
 	],
 	"destinations": [
 		{ "id": "cork", "name": "Corcaigh" },
@@ -33,114 +36,70 @@
 	],
 	"routes": [
 		{
-			"id": "239C",
+			"id": "239",
 			"number": "239",
-			"variant": "C",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["cork_parnell", "crossbarry", "bandon"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/239"
 		},
 		{
-			"id": "239I",
+			"id": "239-return",
 			"number": "239",
-			"variant": "I",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["cork_parnell", "innishannon", "bandon"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/239"
 		},
 		{
-			"id": "239C-return",
-			"number": "239",
-			"variant": "C",
-			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["bandon", "crossbarry", "cork_parnell"]
-		},
-		{
-			"id": "239I-return",
-			"number": "239",
-			"variant": "I",
-			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/239",
-			"stops": ["bandon", "innishannon", "cork_parnell"]
-		},
-		{
-			"id": "237I",
+			"id": "237",
 			"number": "237",
-			"variant": "I",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["cork_parnell", "innishannon", "bandon"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/237"
 		},
 		{
-			"id": "237C-return",
+			"id": "237-return",
 			"number": "237",
-			"variant": "C",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["bandon", "crossbarry", "cork_parnell"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/237"
 		},
 		{
-			"id": "237I-return",
-			"number": "237",
-			"variant": "I",
-			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/237",
-			"stops": ["bandon", "innishannon", "cork_parnell"]
-		},
-		{
-			"id": "236I",
+			"id": "236",
 			"number": "236",
-			"variant": "I",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/236",
-			"stops": ["cork_parnell", "innishannon", "bandon"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/236"
 		},
 		{
-			"id": "236I-return",
+			"id": "236-return",
 			"number": "236",
-			"variant": "I",
 			"operatorId": "buseireann",
-			"link": "https://www.buseireann.ie/routes-and-timetables/236",
-			"stops": ["bandon", "innishannon", "cork_parnell"]
+			"link": "https://www.buseireann.ie/routes-and-timetables/236"
 		},
 		{
 			"id": "229",
 			"number": "229",
-			"variant": "I",
 			"operatorId": "westcork",
-			"link": "https://westcorkconnect.ie/timetable/#bantry",
-			"stops": ["cork_wcc", "innishannon", "bandon"]
+			"link": "https://westcorkconnect.ie/timetable/#bantry"
 		},
 		{
 			"id": "229-return",
 			"number": "229",
-			"variant": "I",
 			"operatorId": "westcork",
-			"link": "https://westcorkconnect.ie/timetable/#bantry",
-			"stops": ["bandon", "innishannon", "cork_wcc"]
+			"link": "https://westcorkconnect.ie/timetable/#bantry"
 		},
 		{
 			"id": "230",
 			"number": "230",
-			"variant": "I",
 			"operatorId": "westcork",
-			"link": "https://westcorkconnect.ie/timetable/#skibbereen",
-			"stops": ["cork_wcc", "innishannon", "bandon"]
+			"link": "https://westcorkconnect.ie/timetable/#skibbereen"
 		},
 		{
 			"id": "230-return",
 			"number": "230",
-			"variant": "I",
 			"operatorId": "westcork",
-			"link": "https://westcorkconnect.ie/timetable/#skibbereen",
-			"stops": ["bandon", "innishannon", "cork_wcc"]
+			"link": "https://westcorkconnect.ie/timetable/#skibbereen"
 		}
 	],
 	"trips": [
 		{
 			"id": "1",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
@@ -151,7 +110,7 @@
 		},
 		{
 			"id": "2",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
@@ -162,7 +121,7 @@
 		},
 		{
 			"id": "3",
-			"routeId": "239C",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
@@ -173,7 +132,7 @@
 		},
 		{
 			"id": "4",
-			"routeId": "239C",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "butlerstown",
 			"departures": {
@@ -184,7 +143,7 @@
 		},
 		{
 			"id": "5",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "butlerstown",
 			"departures": {
@@ -195,7 +154,7 @@
 		},
 		{
 			"id": "6",
-			"routeId": "239C",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
@@ -206,7 +165,7 @@
 		},
 		{
 			"id": "7",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bandon",
 			"departures": {
@@ -217,7 +176,7 @@
 		},
 		{
 			"id": "8",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
@@ -228,7 +187,7 @@
 		},
 		{
 			"id": "9",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
@@ -239,7 +198,7 @@
 		},
 		{
 			"id": "10",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
@@ -250,7 +209,7 @@
 		},
 		{
 			"id": "11",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
@@ -261,7 +220,7 @@
 		},
 		{
 			"id": "12",
-			"routeId": "239C",
+			"routeId": "239",
 			"days": ["sat"],
 			"destination": "bandon",
 			"departures": {
@@ -272,7 +231,7 @@
 		},
 		{
 			"id": "13",
-			"routeId": "239I",
+			"routeId": "239",
 			"days": ["sun"],
 			"destination": "bandon",
 			"departures": {
@@ -283,7 +242,7 @@
 		},
 		{
 			"id": "14",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -294,7 +253,7 @@
 		},
 		{
 			"id": "15",
-			"routeId": "239C-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -305,7 +264,7 @@
 		},
 		{
 			"id": "16",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -316,7 +275,7 @@
 		},
 		{
 			"id": "17",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -327,7 +286,7 @@
 		},
 		{
 			"id": "18",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -338,7 +297,7 @@
 		},
 		{
 			"id": "19",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -349,7 +308,7 @@
 		},
 		{
 			"id": "20",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -360,7 +319,7 @@
 		},
 		{
 			"id": "21",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -371,7 +330,7 @@
 		},
 		{
 			"id": "22",
-			"routeId": "239C-return",
+			"routeId": "239-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -382,7 +341,7 @@
 		},
 		{
 			"id": "23",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -393,7 +352,7 @@
 		},
 		{
 			"id": "24",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -404,7 +363,7 @@
 		},
 		{
 			"id": "25",
-			"routeId": "239I-return",
+			"routeId": "239-return",
 			"days": ["sun"],
 			"destination": "cork",
 			"departures": {
@@ -415,7 +374,7 @@
 		},
 		{
 			"id": "26",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "schull",
 			"departures": {
@@ -426,7 +385,7 @@
 		},
 		{
 			"id": "27",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "skibbereen",
 			"departures": {
@@ -437,7 +396,7 @@
 		},
 		{
 			"id": "28",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "goleen",
 			"departures": {
@@ -448,7 +407,7 @@
 		},
 		{
 			"id": "29",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "goleen",
 			"departures": {
@@ -459,7 +418,7 @@
 		},
 		{
 			"id": "30",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
@@ -470,7 +429,7 @@
 		},
 		{
 			"id": "31",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["sat","sun"],
 			"destination": "skibbereen",
 			"departures": {
@@ -481,7 +440,7 @@
 		},
 		{
 			"id": "32",
-			"routeId": "237I",
+			"routeId": "237",
 			"days": ["sat","sun"],
 			"destination": "goleen",
 			"departures": {
@@ -492,7 +451,7 @@
 		},
 		{
 			"id": "33",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -503,7 +462,7 @@
 		},
 		{
 			"id": "34",
-			"routeId": "237C-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -514,7 +473,7 @@
 		},
 		{
 			"id": "35",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -525,7 +484,7 @@
 		},
 		{
 			"id": "36",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -536,7 +495,7 @@
 		},
 		{
 			"id": "37",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -547,7 +506,7 @@
 		},
 		{
 			"id": "38",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -558,7 +517,7 @@
 		},
 		{
 			"id": "39",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -569,7 +528,7 @@
 		},
 		{
 			"id": "40",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -580,7 +539,7 @@
 		},
 		{
 			"id": "41",
-			"routeId": "237I-return",
+			"routeId": "237-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -591,7 +550,7 @@
 		},
 		{
 			"id": "42",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
@@ -602,7 +561,7 @@
 		},
 		{
 			"id": "43",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "bantry",
 			"departures": {
@@ -613,7 +572,7 @@
 		},
 		{
 			"id": "44",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "bantry",
 			"departures": {
@@ -624,7 +583,7 @@
 		},
 		{
 			"id": "45",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
@@ -635,7 +594,7 @@
 		},
 		{
 			"id": "46",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "bantry",
 			"departures": {
@@ -646,7 +605,7 @@
 		},
 		{
 			"id": "47",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "bantry",
 			"departures": {
@@ -657,7 +616,7 @@
 		},
 		{
 			"id": "48",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["sun"],
 			"destination": "bantry",
 			"departures": {
@@ -668,7 +627,7 @@
 		},
 		{
 			"id": "49",
-			"routeId": "236I",
+			"routeId": "236",
 			"days": ["sun"],
 			"destination": "bantry",
 			"departures": {
@@ -679,7 +638,7 @@
 		},
 		{
 			"id": "50",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "cork",
 			"departures": {
@@ -690,7 +649,7 @@
 		},
 		{
 			"id": "51",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -701,7 +660,7 @@
 		},
 		{
 			"id": "52",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "cork",
 			"departures": {
@@ -712,7 +671,7 @@
 		},
 		{
 			"id": "53",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri","sat"],
 			"destination": "cork",
 			"departures": {
@@ -723,7 +682,7 @@
 		},
 		{
 			"id": "54",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -734,7 +693,7 @@
 		},
 		{
 			"id": "55",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri"],
 			"destination": "cork",
 			"departures": {
@@ -745,7 +704,7 @@
 		},
 		{
 			"id": "56",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["mon","tue","wed","thu","fri","sat","sun"],
 			"destination": "cork",
 			"departures": {
@@ -756,7 +715,7 @@
 		},
 		{
 			"id": "57",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -767,7 +726,7 @@
 		},
 		{
 			"id": "58",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["sat"],
 			"destination": "cork",
 			"departures": {
@@ -778,7 +737,7 @@
 		},
 		{
 			"id": "59",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["sun"],
 			"destination": "cork",
 			"departures": {
@@ -789,7 +748,7 @@
 		},
 		{
 			"id": "60",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["sun"],
 			"destination": "cork",
 			"departures": {
@@ -800,7 +759,7 @@
 		},
 		{
 			"id": "61",
-			"routeId": "236I-return",
+			"routeId": "236-return",
 			"days": ["sun"],
 			"destination": "cork",
 			"departures": {

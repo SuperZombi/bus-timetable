@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState, useEffect, useMemo } = React
 
 function App() {
 	const [data, setData] = useState(null)
@@ -8,8 +8,9 @@ function App() {
 	const [filters, setFilters] = useState({
 		routes: [],
 		operators: [],
-		stops: [],
-		days: []
+		days: [],
+		via: null,
+		from: null
 	})
 
 	useEffect(() => {
@@ -18,11 +19,22 @@ function App() {
 			.then(setData)
 	}, [])
 
-	if (!data) return <div className="p-6">Loading...</div>
+	
 
-	const toggleFilter = (type, value) => {
-		setFilters(prev => {
+	const toggleFilter = (type, value, inputType = "checkbox") => {
+	setFilters(prev => {
+
+			// RADIO логика
+			if (inputType === "radio") {
+				return {
+					...prev,
+					[type]: prev[type] === value ? null : value
+				}
+			}
+
+			// CHECKBOX логика
 			const exists = prev[type].includes(value)
+
 			return {
 				...prev,
 				[type]: exists
@@ -32,26 +44,54 @@ function App() {
 		})
 	}
 
-	const filteredTrips = data.trips
-		.filter(trip => {
-			if (filters.days.length &&
-				!trip.days.some(d => filters.days.includes(d))) return false
+	const filteredTrips = useMemo(() => {
+
+		if (!data) return []
+
+		return data.trips.filter(trip => {
 
 			const route = data.routes.find(r => r.id === trip.routeId)
 
+			// DAYS (массив)
+			if (filters.days.length &&
+				!trip.days.some(d => filters.days.includes(d)))
+				return false
+
+			// ROUTES (массив)
 			if (filters.routes.length &&
-				!filters.routes.includes(route.number)) return false
+				!filters.routes.includes(route.number))
+				return false
 
+			// OPERATORS (массив)
 			if (filters.operators.length &&
-				!filters.operators.includes(route.operatorId)) return false
+				!filters.operators.includes(route.operatorId))
+				return false
 
-			if (filters.stops.length &&
-				!filters.stops.some(stopId =>
-					Object.keys(trip.departures).includes(stopId)
-				)) return false
+			// VIA (radio → строка или null)
+			if (filters.via) {
+				const stops = Object.keys(trip.departures)
+				if (!stops.includes(filters.via))
+					return false
+			}
+
+			// FROM (radio → строка или null)
+			if (filters.from) {
+				const firstStopId = Object.keys(trip.departures)[0]
+
+				const firstStop = data.stops.find(
+					stop => stop.id === firstStopId
+				)
+
+				if (!firstStop || firstStop.city !== filters.from)
+					return false
+			}
 
 			return true
 		})
+
+	}, [filters, data])
+
+	if (!data) return <div className="p-6">Loading...</div>
 
 	return (
 		<div className="max-w-md mx-auto pb-10">
@@ -96,7 +136,12 @@ function App() {
 										const stop = data.stops.find(s => s.id === stopId)
 										return (
 											<div key={stopId} className="flex justify-between text-sm">
-												<span className="text-gray-600">{stop.name}</span>
+												<span className="text-gray-600 flex gap-1 items-center">
+													<span>{stop.name}</span>
+													{stop.from && <span className="text-gray-400 text-xs">
+														({stop.from})
+													</span>}
+												</span>
 												<span className="font-semibold">{time}</span>
 											</div>
 										)
@@ -106,8 +151,15 @@ function App() {
 
 							{expandedId === trip.id && (
 								<div className="mt-4 pt-3 border-t text-sm text-gray-600 space-y-1">
-									<div><strong>Operator:</strong> {operator.name}</div>
-									<div><strong>Display on bus:</strong> {destination.name}</div>
+									<div className="flex gap-1">
+										<strong>Operator:</strong>
+										<a className="hover:underline" href={route.link} target="_blank"
+											style={{color: operator.color}}
+										>
+											{operator.name}
+										</a>
+									</div>
+									<div><strong>Destination:</strong> {destination.name}</div>
 								</div>
 							)}
 						</div>
@@ -128,11 +180,16 @@ function Header() {
 
 function FilterBar({ data, filters, toggleFilter, openFilter, setOpenFilter }) {
 
+	const isActive = value => {
+		if (Array.isArray(value)) return value.length > 0
+		return Boolean(value)
+	}
+
 	const filterButton = (label, key) => (
 		<button
 			onClick={() => setOpenFilter(openFilter === key ? null : key)}
 			className={`px-4 py-2 rounded-full text-sm whitespace-nowrap border
-				${filters[key].length
+				${isActive(filters[key])
 					? "bg-black text-white"
 					: "bg-white text-gray-700"}`}
 		>
@@ -145,9 +202,10 @@ function FilterBar({ data, filters, toggleFilter, openFilter, setOpenFilter }) {
 
 			<div className="flex gap-2 overflow-x-auto px-4 py-3 bg-gray-50 border-b">
 
+				{filterButton("From", "from")}
+				{filterButton("Via", "via")}
 				{filterButton("Routes", "routes")}
 				{filterButton("Operators", "operators")}
-				{filterButton("Stops", "stops")}
 				{filterButton("Days", "days")}
 
 			</div>
@@ -171,6 +229,7 @@ function FilterBar({ data, filters, toggleFilter, openFilter, setOpenFilter }) {
 function CheckboxList({ type, data, filters, toggleFilter }) {
 
 	let items = []
+	let inputType = "checkbox"
 
 	if (type === "routes")
 		items = [...new Set(data.routes.map(r => r.number))]
@@ -178,8 +237,21 @@ function CheckboxList({ type, data, filters, toggleFilter }) {
 	if (type === "operators")
 		items = data.operators.map(o => ({ id: o.id, label: o.name }))
 
-	if (type === "stops")
-		items = data.stops.map(s => ({ id: s.id, label: s.name }))
+	if (type === "via") {
+		items = [
+			{id: "crossbarry", label: "Crossbarry"},
+			{id: "innishannon", label: "Innishannon"},
+		]
+		inputType = "radio"
+	}
+
+	if (type === "from") {
+		items = [
+			{id: "cork", label: "Cork"},
+			{id: "bandon", label: "Bandon"},
+		]
+		inputType = "radio"
+	}
 
 	if (type === "days")
 		items = ["mon","tue","wed","thu","fri","sat","sun"]
@@ -190,12 +262,26 @@ function CheckboxList({ type, data, filters, toggleFilter }) {
 				const value = typeof item === "string" ? item : item.id
 				const label = typeof item === "string" ? item : item.label
 
+				const checked =
+					inputType === "checkbox"
+						? filters[type].includes(value)
+						: filters[type] === value
+
 				return (
-					<label key={value} className="flex items-center space-x-2 text-sm">
+					<label key={`${type}-${value}`} className="flex items-center space-x-2 text-sm">
 						<input
-							type="checkbox"
-							checked={filters[type].includes(value)}
-							onChange={() => toggleFilter(type, value)}
+							type={inputType}
+							name={type}
+							checked={checked}
+							onClick={() => {
+								if (inputType === "radio" && checked) {
+									// если уже выбран → снять
+									toggleFilter(type, null, inputType)
+								} else {
+									toggleFilter(type, value, inputType)
+								}
+							}}
+							readOnly
 						/>
 						<span>{label}</span>
 					</label>
