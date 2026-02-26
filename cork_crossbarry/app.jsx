@@ -98,95 +98,12 @@ const App = ()=>{
 							<span>¯\_(ツ)_/¯</span>
 						</div>
 					)}
-					{filteredTrips.map(trip => {
-						const route = data.routes.find(r => r.id === trip.routeId)
-						const operator = data.operators.find(o => o.id === route.operatorId)
-						const destination = data.destinations.find(d => d.id === trip.destination)
-						const firstStop = data.stops.find(s => s.id === Object.keys(trip.departures)[0])
-
-						return (
-							<div
-								key={trip.id}
-								className="bg-white rounded-2xl shadow-sm border p-4"
-							>
-								<div
-									onClick={() => setExpandedId(expandedId === trip.id ? null : trip.id)}
-									className="cursor-pointer"
-								>
-									<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
-										<div className="text-lg font-bold"
-											style={{color: operator.color}}
-										>
-											Route {route.number}
-										</div>
-										<div className="flex flex-wrap gap-1 mt-2 sm:mt-0 select-none">
-											{trip.days.map(day => (
-												<span key={day} 
-													className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-200 text-gray-700 capitalize"
-												>
-													{day.slice(0, 3)}
-												</span>
-											))}
-										</div>
-									</div>
-									<div className="space-y-1 divide-y divide-gray-200">
-										{Object.entries(trip.departures).map(([stopId, time]) => {
-											const stop = data.stops.find(s => s.id === stopId)
-											return (
-												<div key={stopId} className="flex justify-between">
-													<span className="text-gray-600">{stop.name}</span>
-													<span className="font-semibold">{time}</span>
-												</div>
-											)
-										})}
-									</div>
-								</div>
-								{expandedId === trip.id && (
-									<div className="mt-4 pt-3 border-t text-sm text-gray-600 space-y-1">
-										<div className="flex gap-1">
-											<strong>Operator:</strong>
-											{operator.img && (
-												<img src={operator.img} width="48" className="select-none" draggable={false}/>
-											)}
-											<a className="hover:underline" href={route.link} target="_blank"
-												style={{color: operator.color}}
-											>
-												{operator.name}
-											</a>
-										</div>
-										{firstStop.from && (
-											<div className="flex gap-1">
-												<strong>From:</strong>
-												{firstStop.link ? (
-													<a href={firstStop.link} target="_blank"
-														className="hover:underline"
-													>
-														{firstStop.from}
-													</a>
-												) : (
-													<span>{firstStop.from}</span>
-												)}
-											</div>
-										)}
-										{firstStop.city === "cork" && (
-											<div className="flex gap-1">
-												<strong>Also:</strong>
-												<a href="https://maps.app.goo.gl/xhcMxbLtw9wkx8b47" target="_blank"
-													className="hover:underline"
-												>
-													Washington Street
-												</a>
-											</div>
-										)}
-										<div className="flex gap-1">
-											<strong>Destination:</strong>
-											<span>{destination.name}</span>
-										</div>
-									</div>
-								)}
-							</div>
-						)
-					})}
+					{filteredTrips.map(trip => (
+						<TripCard key={trip.id}
+							data={data} trip={trip}
+							expandedId={expandedId} setExpandedId={setExpandedId}
+						/>
+					))}
 				</div>
 			) : <Loader/>}
 		</div>
@@ -210,6 +127,104 @@ const Loader = ()=>{
 					<animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/>
 				</path>
 			</svg>
+		</div>
+	)
+}
+
+const TripCard = ({data, trip, expandedId, setExpandedId}) => {
+	const route = data.routes.find(r => r.id === trip.routeId)
+	const operator = data.operators.find(o => o.id === route.operatorId)
+	const destination = data.destinations.find(d => d.id === trip.destination)
+	const firstStop = data.stops.find(s => s.id === Object.keys(trip.departures)[0])
+
+	return (
+		<div className="bg-white rounded-2xl shadow-sm border p-4">
+			<div className="cursor-pointer"
+				onClick={() => setExpandedId(expandedId === trip.id ? null : trip.id)}
+			>
+				<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
+					<div className="text-lg font-bold" style={{color: operator.color}}>
+						Route {route.number}
+					</div>
+					<div className="flex flex-wrap gap-1 mt-2 sm:mt-0 select-none">
+						{trip.days.map(day => (
+							<span key={day} 
+								className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gray-200 text-gray-700 capitalize"
+							>
+								{day.slice(0, 3)}
+							</span>
+						))}
+					</div>
+				</div>
+				<div className="divide-y divide-gray-200">
+					{Object.entries(trip.departures).map(([stopId, time], stopIndex, allStops) => {
+						const stop = data.stops.find(s => s.id === stopId)
+						const isFirstStop = stopIndex === 0
+						const isLastStop = stopIndex === allStops.length - 1
+
+						return (
+							<div key={stopId} className="flex items-center gap-4 py-1">
+								<div className="relative flex flex-col items-center">
+									{!isFirstStop && (
+										<span className="absolute bottom-3 h-full w-px bg-gray-300"/>
+									)}
+									<span
+										className="h-3 w-3 rounded-full border-2 bg-white border-gray-400"
+									/>
+									{!isLastStop && (
+										<span className="absolute top-3 h-full w-px bg-gray-300"/>
+									)}
+								</div>
+								<span className="font-mono font-semibold tracking-wide text-gray-800">{time}</span>
+								<span className="text-gray-600 ml-auto">{stop.name}</span>
+							</div>
+						)
+					})}
+				</div>
+			</div>
+			{expandedId === trip.id && (
+				<div className="pt-3 border-t text-sm text-gray-600 space-y-1">
+					<div className="flex gap-1">
+						<strong>Operator:</strong>
+						{operator.img && (
+							<img src={operator.img} width="48" className="select-none" draggable={false}/>
+						)}
+						<a className="hover:underline" href={route.link} target="_blank"
+							style={{color: operator.color}}
+						>
+							{operator.name}
+						</a>
+					</div>
+					{firstStop.from && (
+						<div className="flex gap-1">
+							<strong>From:</strong>
+							{firstStop.link ? (
+								<a href={firstStop.link} target="_blank"
+									className="hover:underline"
+								>
+									{firstStop.from}
+								</a>
+							) : (
+								<span>{firstStop.from}</span>
+							)}
+						</div>
+					)}
+					{firstStop.city === "cork" && (
+						<div className="flex gap-1">
+							<strong>Also:</strong>
+							<a href="https://maps.app.goo.gl/xhcMxbLtw9wkx8b47" target="_blank"
+								className="hover:underline"
+							>
+								Washington Street
+							</a>
+						</div>
+					)}
+					<div className="flex gap-1">
+						<strong>Destination:</strong>
+						<span>{destination.name}</span>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
