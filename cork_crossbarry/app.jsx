@@ -156,27 +156,26 @@ const TripCard = ({data, trip, expandedId, setExpandedId}) => {
 						))}
 					</div>
 				</div>
-				<div className="divide-y divide-gray-200">
+				<div>
 					{Object.entries(trip.departures).map(([stopId, time], stopIndex, allStops) => {
 						const stop = data.stops.find(s => s.id === stopId)
 						const isFirstStop = stopIndex === 0
 						const isLastStop = stopIndex === allStops.length - 1
 
 						return (
-							<div key={stopId} className="flex items-center gap-4 py-1">
-								<div className="relative flex flex-col items-center">
-									{!isFirstStop && (
-										<span className="absolute bottom-3 h-full w-px bg-gray-300"/>
-									)}
+							<div key={stopId} className="relative flex items-center gap-4">
+								<div className="flex flex-col items-center">
 									<span
-										className="h-3 w-3 rounded-full border-2 bg-white border-gray-400"
+										className="h-3 w-3 z-10 rounded-full border-2 bg-white border-gray-400"
 									/>
 									{!isLastStop && (
-										<span className="absolute top-3 h-full w-px bg-gray-300"/>
+										<span className="absolute top-0 translate-y-1/2 h-full w-px bg-gray-300"/>
 									)}
 								</div>
-								<span className="font-mono font-semibold tracking-wide text-gray-800">{time}</span>
-								<span className="text-gray-600 ml-auto">{stop.name}</span>
+								<div className={`flex items-center gap-4 flex-1 py-2 ${!isFirstStop ? "border-t border-gray-200" : ""}`}>
+									<span className="font-mono font-semibold tracking-wide text-gray-800">{time}</span>
+									<span className="text-gray-600 ml-auto">{stop.name}</span>
+								</div>
 							</div>
 						)
 					})}
