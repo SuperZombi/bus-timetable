@@ -81,7 +81,7 @@ const App = ()=>{
 	}, [filters, data])
 
 	return (
-		<div className="max-w-xl mx-auto pb-10">
+		<div className="max-w-xl mx-auto">
 			<Header />
 			<FilterBar
 				data={data}
@@ -91,7 +91,7 @@ const App = ()=>{
 				setOpenFilter={setOpenFilter}
 			/>
 			{data ? (
-				<div className="px-4 mt-4 space-y-4">
+				<div className="p-2 space-y-2">
 					{filteredTrips.length === 0 && (
 						<div className="bg-white rounded-2xl shadow-sm border p-6 text-center text-sm text-gray-600 flex flex-col gap-2">
 							<span>Nothing found</span>
@@ -129,11 +129,11 @@ const App = ()=>{
 											))}
 										</div>
 									</div>
-									<div className="space-y-1">
+									<div className="space-y-1 divide-y divide-gray-200">
 										{Object.entries(trip.departures).map(([stopId, time]) => {
 											const stop = data.stops.find(s => s.id === stopId)
 											return (
-												<div key={stopId} className="flex justify-between text-sm">
+												<div key={stopId} className="flex justify-between">
 													<span className="text-gray-600">{stop.name}</span>
 													<span className="font-semibold">{time}</span>
 												</div>
@@ -195,8 +195,8 @@ const App = ()=>{
 
 const Header = ()=>{
 	return (
-		<div className="sticky top-0 bg-white z-20 border-b px-4 py-3">
-			<h1 className="text-xl font-bold text-center">Bus Departures</h1>
+		<div className="border-b px-4 py-3">
+			<h1 className="text-xl font-bold text-center">Bus Schedule</h1>
 		</div>
 	)
 }
@@ -248,8 +248,8 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		</button>
 	)
 	return (
-		<div className="relative select-none" ref={filterRef}>
-			<div className="flex gap-2 overflow-x-auto px-4 py-3 bg-gray-50 border-b">
+		<div className="sticky top-0 bg-white z-10 select-none" ref={filterRef}>
+			<div className="flex gap-2 overflow-x-auto [scrollbar-width:thin] px-4 py-3 bg-gray-50 border-b">
 				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
 				{filterButton("Via", "via", <i className="fa-solid fa-plane"/>)}
 				{filterButton("Days", "days", <i className="fa-solid fa-calendar"/>)}
@@ -257,7 +257,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 				{filterButton("Operators", "operators", <i className="fa-solid fa-bus-simple"/>)}
 			</div>
 			{openFilter && (
-				<div className="absolute w-full bg-white shadow-lg border-b z-30 p-4 sm:rounded-b-lg">
+				<div className="absolute w-full flex justify-center bg-white shadow-lg border-b z-20 p-4 sm:rounded-b-lg">
 					<CheckboxList
 						type={openFilter}
 						data={data}
@@ -319,7 +319,7 @@ const CheckboxList = ({ type, data, filters, toggleFilter }) => {
 		]
 
 	return (
-		<div className="grid grid-cols-2 gap-3 justify-items-start">
+		<div className="grid grid-cols-2 gap-x-10 gap-y-3 justify-items-start">
 			{items.map(item => {
 				const value = typeof item === "string" ? item : item.id
 				const label = typeof item === "string" ? item : item.label
