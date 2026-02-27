@@ -262,7 +262,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		</button>
 	)
 	return (
-		<div className="sticky top-0 bg-white z-10 select-none" ref={filterRef}>
+		<div className="sticky top-0 bg-white z-20 select-none" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto [scrollbar-width:thin] px-4 py-3 bg-gray-50 border-b">
 				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
 				{filterButton("Via", "via", <i className="fa-solid fa-plane"/>)}
