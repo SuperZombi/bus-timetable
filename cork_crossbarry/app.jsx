@@ -58,6 +58,7 @@ const App = ()=>{
 	const [expandedId, setExpandedId] = useState(null)
 	const [openFilter, setOpenFilter] = useState(null)
 	const [highlightedTripId, setHighlightedTripId] = useState(null)
+	const [isNowMode, setIsNowMode] = useState(false)
 
 	const [filters, setFilters] = useState({
 		routes: [],
@@ -102,8 +103,9 @@ const App = ()=>{
 			days: [day]
 		}
 
-		setFilters(nowFilters)
-		setOpenFilter(null)
+		if (filters.days.length !== 1 || filters.days[0] !== day) {
+			setFilters(nowFilters)
+		}
 
 		const todayTrips = filterTripsByFilters(data, nowFilters)
 		if (!todayTrips.length) {
@@ -124,6 +126,31 @@ const App = ()=>{
 		setExpandedId(currentOrNextTrip.id)
 	}
 
+	const toggleNowMode = () => {
+		setOpenFilter(null)
+		setIsNowMode(prev => {
+			const next = !prev
+			if (next) {
+				goToCurrentBus()
+			} else {
+				setHighlightedTripId(null)
+				setExpandedId(null)
+				setFilters(prev=>{
+					return {
+						...prev,
+						days: []
+					}
+				})
+			}
+			return next
+		})
+	}
+
+	useEffect(() => {
+		if (!isNowMode || !data) return
+		goToCurrentBus()
+	}, [filters.routes, filters.operators, filters.via, filters.from, filters.days, data, isNowMode])
+
 	useEffect(() => {
 		if (!highlightedTripId) return
 
@@ -142,8 +169,8 @@ const App = ()=>{
 				toggleFilter={toggleFilter}
 				openFilter={openFilter}
 				setOpenFilter={setOpenFilter}
-				onNowClick={goToCurrentBus}
-				isHighlighted={highlightedTripId}
+				onNowClick={toggleNowMode}
+				isNowMode={isNowMode}
 			/>
 			{data ? (
 				<div className="p-2 space-y-2">
@@ -158,7 +185,6 @@ const App = ()=>{
 							data={data} trip={trip}
 							expandedId={expandedId} setExpandedId={setExpandedId}
 							isHighlighted={highlightedTripId === trip.id}
-							setisHighlighted={setHighlightedTripId}
 						/>
 					))}
 				</div>
@@ -188,7 +214,7 @@ const Loader = ()=>{
 	)
 }
 
-const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted, setisHighlighted}) => {
+const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted}) => {
 	const route = data.routes.find(r => r.id === trip.routeId)
 	const operator = data.operators.find(o => o.id === route.operatorId)
 	const destination = data.destinations.find(d => d.id === trip.destination)
@@ -201,10 +227,7 @@ const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted, setisHi
 			${isHighlighted ? "border-blue-500" : ""}`}
 		>
 			<div className="cursor-pointer"
-				onClick={_=>{
-					setExpandedId(expandedId === trip.id ? null : trip.id)
-					setisHighlighted(null)
-				}}
+				onClick={_=>setExpandedId(expandedId === trip.id ? null : trip.id)}
 			>
 				<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
 					<div className="text-lg font-bold" style={{color: operator.color}}>
@@ -292,7 +315,7 @@ const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted, setisHi
 	)
 }
 
-const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onNowClick, isHighlighted }) => {
+const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onNowClick, isNowMode }) => {
 	const filterRef = useRef(null)
 
 	useEffect(() => {
@@ -337,7 +360,7 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onN
 				<FilterBtn
 					label={"Now"}
 					icon={<i className="fa-solid fa-clock"/>}
-					isActive={isHighlighted}
+					isActive={isNowMode}
 					onClick={onNowClick}
 				/>
 				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
