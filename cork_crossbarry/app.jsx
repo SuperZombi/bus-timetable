@@ -143,6 +143,7 @@ const App = ()=>{
 				openFilter={openFilter}
 				setOpenFilter={setOpenFilter}
 				onNowClick={goToCurrentBus}
+				isHighlighted={highlightedTripId}
 			/>
 			{data ? (
 				<div className="p-2 space-y-2">
@@ -291,7 +292,7 @@ const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted, setisHi
 	)
 }
 
-const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onNowClick }) => {
+const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onNowClick, isHighlighted }) => {
 	const filterRef = useRef(null)
 
 	useEffect(() => {
@@ -313,13 +314,13 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onN
 		if (Array.isArray(value)) return value.length > 0
 		return Boolean(value)
 	}
-	const FilterBtn = ({label, icon=null, className="", onClick=null}) => {
+	const FilterBtn = ({label, icon=null, isActive=false, onClick=null}) => {
 		return (
 			<button onClick={onClick} className={`
 				flex gap-2 items-center px-4 py-2 rounded-full text-sm whitespace-nowrap border
 				transition hover:bg-black hover:text-white
-				${className}`}
-			>
+				${isActive ? "bg-black text-white" : "bg-white text-gray-700"}
+			`}>
 				{icon}<span>{label}</span>
 			</button>
 		)
@@ -327,16 +328,17 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onN
 	const filterButton = (label, key, icon=null) => (
 		<FilterBtn label={label} icon={icon}
 			onClick={_=>setOpenFilter(openFilter === key ? null : key)}
-			className={isActive(filters[key]) ? "bg-black text-white" : "bg-white text-gray-700"}
+			isActive={isActive(filters[key])}
 		/>
 	)
 	return (
 		<div className="sticky top-0 bg-white z-20 select-none" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto [scrollbar-width:thin] px-4 py-3 bg-gray-50 border-b">
 				<FilterBtn
-					onClick={onNowClick}
 					label={"Now"}
 					icon={<i className="fa-solid fa-clock"/>}
+					isActive={isHighlighted}
+					onClick={onNowClick}
 				/>
 				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
 				{filterButton("Via", "via", <i className="fa-solid fa-plane"/>)}
