@@ -1,9 +1,63 @@
-const { useState, useEffect, useMemo, useRef } = React
+const { useState, useEffect, useMemo, useRef, Fragment } = React
+
+const getCurrentDayAndTime = () => {
+	const DAY_IDS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+	const now = new Date()
+	return {
+		day: DAY_IDS[now.getDay()],
+		time: `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`
+	}
+}
+
+const filterTripsByFilters = (data, filters) => {
+	if (!data) return []
+
+	return data.trips.filter(trip => {
+		const route = data.routes.find(r => r.id === trip.routeId)
+
+		if (filters.days.length &&
+			!trip.days.some(d => filters.days.includes(d)))
+			return false
+
+		if (filters.routes.length &&
+			!filters.routes.includes(route.number))
+			return false
+
+		if (filters.operators.length &&
+			!filters.operators.includes(route.operatorId))
+			return false
+
+		if (filters.via) {
+			const stops = Object.keys(trip.departures)
+			if (!stops.includes(filters.via))
+				return false
+		}
+
+		if (filters.from) {
+			const firstStopId = Object.keys(trip.departures)[0]
+			const firstStop = data.stops.find(
+				stop => stop.id === firstStopId
+			)
+			if (!firstStop || firstStop.city !== filters.from)
+				return false
+		}
+		return true
+	}).sort((a, b) => {
+		const getFirstTime = trip => {
+			const firstStopId = Object.keys(trip.departures)[0]
+			return trip.departures[firstStopId]
+		}
+		const timeA = getFirstTime(a)
+		const timeB = getFirstTime(b)
+		return timeA.localeCompare(timeB)
+	})
+}
 
 const App = ()=>{
 	const [data, setData] = useState(null)
 	const [expandedId, setExpandedId] = useState(null)
 	const [openFilter, setOpenFilter] = useState(null)
+	const [highlightedTripId, setHighlightedTripId] = useState(null)
 
 	const [filters, setFilters] = useState({
 		routes: [],
@@ -37,48 +91,47 @@ const App = ()=>{
 		})
 	}
 
-	const filteredTrips = useMemo(() => {
-		if (!data) return []
-		return data.trips.filter(trip => {
-			const route = data.routes.find(r => r.id === trip.routeId)
+	const filteredTrips = useMemo(() => filterTripsByFilters(data, filters), [filters, data])
 
-			if (filters.days.length &&
-				!trip.days.some(d => filters.days.includes(d)))
-				return false
+	const goToCurrentBus = () => {
+		if (!data) return
 
-			if (filters.routes.length &&
-				!filters.routes.includes(route.number))
-				return false
+		const { day, time } = getCurrentDayAndTime()
+		const nowFilters = {
+			...filters,
+			days: [day]
+		}
 
-			if (filters.operators.length &&
-				!filters.operators.includes(route.operatorId))
-				return false
+		setFilters(nowFilters)
+		setOpenFilter(null)
 
-			if (filters.via) {
-				const stops = Object.keys(trip.departures)
-				if (!stops.includes(filters.via))
-					return false
-			}
+		const todayTrips = filterTripsByFilters(data, nowFilters)
+		if (!todayTrips.length) {
+			setHighlightedTripId(null)
+			setExpandedId(null)
+			return
+		}
 
-			if (filters.from) {
-				const firstStopId = Object.keys(trip.departures)[0]
-				const firstStop = data.stops.find(
-					stop => stop.id === firstStopId
-				)
-				if (!firstStop || firstStop.city !== filters.from)
-					return false
-			}
-			return true
-		}).sort((a, b) => {
-			const getFirstTime = trip => {
-				const firstStopId = Object.keys(trip.departures)[0]
-				return trip.departures[firstStopId]
-			}
-			const timeA = getFirstTime(a)
-			const timeB = getFirstTime(b)
-			return timeA.localeCompare(timeB)
-		})
-	}, [filters, data])
+		const getFirstTime = trip => {
+			const firstStopId = Object.keys(trip.departures)[0]
+			return trip.departures[firstStopId]
+		}
+
+		const currentOrNextTrip =
+			todayTrips.find(trip => getFirstTime(trip) >= time) || todayTrips[0]
+
+		setHighlightedTripId(currentOrNextTrip.id)
+		setExpandedId(currentOrNextTrip.id)
+	}
+
+	useEffect(() => {
+		if (!highlightedTripId) return
+
+		const element = document.getElementById(`trip-${highlightedTripId}`)
+		if (!element) return
+
+		element.scrollIntoView({ behavior: "smooth", block: "center" })
+	}, [highlightedTripId, filteredTrips])
 
 	return (
 		<div className="max-w-xl mx-auto">
@@ -89,6 +142,7 @@ const App = ()=>{
 				toggleFilter={toggleFilter}
 				openFilter={openFilter}
 				setOpenFilter={setOpenFilter}
+				onNowClick={goToCurrentBus}
 			/>
 			{data ? (
 				<div className="p-2 space-y-2">
@@ -102,6 +156,8 @@ const App = ()=>{
 						<TripCard key={trip.id}
 							data={data} trip={trip}
 							expandedId={expandedId} setExpandedId={setExpandedId}
+							isHighlighted={highlightedTripId === trip.id}
+							setisHighlighted={setHighlightedTripId}
 						/>
 					))}
 				</div>
@@ -131,16 +187,23 @@ const Loader = ()=>{
 	)
 }
 
-const TripCard = ({data, trip, expandedId, setExpandedId}) => {
+const TripCard = ({data, trip, expandedId, setExpandedId, isHighlighted, setisHighlighted}) => {
 	const route = data.routes.find(r => r.id === trip.routeId)
 	const operator = data.operators.find(o => o.id === route.operatorId)
 	const destination = data.destinations.find(d => d.id === trip.destination)
 	const firstStop = data.stops.find(s => s.id === Object.keys(trip.departures)[0])
 
 	return (
-		<div className="bg-white rounded-2xl shadow-sm border p-4">
+		<div
+			id={`trip-${trip.id}`}
+			className={`bg-white rounded-2xl shadow-sm p-4 border-2 transition-all
+			${isHighlighted ? "border-blue-500" : ""}`}
+		>
 			<div className="cursor-pointer"
-				onClick={() => setExpandedId(expandedId === trip.id ? null : trip.id)}
+				onClick={_=>{
+					setExpandedId(expandedId === trip.id ? null : trip.id)
+					setisHighlighted(null)
+				}}
 			>
 				<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
 					<div className="text-lg font-bold" style={{color: operator.color}}>
@@ -206,16 +269,16 @@ const TripCard = ({data, trip, expandedId, setExpandedId}) => {
 							) : (
 								<span>{firstStop.from}</span>
 							)}
-						</div>
-					)}
-					{firstStop.city === "cork" && (
-						<div className="flex gap-1">
-							<strong>Also:</strong>
-							<a href="https://maps.app.goo.gl/xhcMxbLtw9wkx8b47" target="_blank"
-								className="hover:underline"
-							>
-								Washington Street
-							</a>
+							{firstStop.city === "cork" && (
+								<Fragment>
+									<i>or</i>
+									<a href="https://maps.app.goo.gl/xhcMxbLtw9wkx8b47" target="_blank"
+										className="hover:underline"
+									>
+										Washington Street
+									</a>
+								</Fragment>
+							)}
 						</div>
 					)}
 					<div className="flex gap-1">
@@ -228,7 +291,7 @@ const TripCard = ({data, trip, expandedId, setExpandedId}) => {
 	)
 }
 
-const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) => {
+const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter, onNowClick }) => {
 	const filterRef = useRef(null)
 
 	useEffect(() => {
@@ -250,20 +313,31 @@ const FilterBar = ({ data, filters, toggleFilter, openFilter, setOpenFilter }) =
 		if (Array.isArray(value)) return value.length > 0
 		return Boolean(value)
 	}
+	const FilterBtn = ({label, icon=null, className="", onClick=null}) => {
+		return (
+			<button onClick={onClick} className={`
+				flex gap-2 items-center px-4 py-2 rounded-full text-sm whitespace-nowrap border
+				transition hover:bg-black hover:text-white
+				${className}`}
+			>
+				{icon}<span>{label}</span>
+			</button>
+		)
+	}
 	const filterButton = (label, key, icon=null) => (
-		<button
-			onClick={() => setOpenFilter(openFilter === key ? null : key)}
-			className={`flex gap-2 items-center px-4 py-2 rounded-full text-sm whitespace-nowrap border
-				${isActive(filters[key])
-					? "bg-black text-white"
-					: "bg-white text-gray-700"}`}
-		>
-			{icon}<span>{label}</span>
-		</button>
+		<FilterBtn label={label} icon={icon}
+			onClick={_=>setOpenFilter(openFilter === key ? null : key)}
+			className={isActive(filters[key]) ? "bg-black text-white" : "bg-white text-gray-700"}
+		/>
 	)
 	return (
 		<div className="sticky top-0 bg-white z-20 select-none" ref={filterRef}>
 			<div className="flex gap-2 overflow-x-auto [scrollbar-width:thin] px-4 py-3 bg-gray-50 border-b">
+				<FilterBtn
+					onClick={onNowClick}
+					label={"Now"}
+					icon={<i className="fa-solid fa-clock"/>}
+				/>
 				{filterButton("From", "from", <i className="fa-solid fa-plane-departure"/>)}
 				{filterButton("Via", "via", <i className="fa-solid fa-plane"/>)}
 				{filterButton("Days", "days", <i className="fa-solid fa-calendar"/>)}
