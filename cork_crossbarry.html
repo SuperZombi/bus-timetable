@@ -8,7 +8,23 @@
 			font-family: sans-serif;
 		}
 		a{
-			color: inherit;
+			text-decoration: none;
+			padding: 0 1rem;
+			border-radius: 1rem;
+		}
+		a.red {
+			background: #a6192e;
+			color: white;
+		}
+		a.red:hover{
+			background: #8d1527
+		}
+		a.blue {
+			background: #0170ea;
+			color: white;
+		}
+		a.blue:hover {
+			background: #0963c6;
 		}
 		button{
 			font-size: 1rem;
@@ -55,7 +71,7 @@
 			margin-bottom: 2rem;
 			overflow-x: auto;
 			white-space: nowrap;
-			max-width: 100%;
+			max-width: 100dvw;
 		}
 		.container-center{
 			text-align: center;
@@ -92,26 +108,26 @@
 <body>
 	<div class="container-center">
 		<div class="container-2">
-			<fieldset>
-				<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/239" target="_blank">Route 239</a></h2>
+			<a href="https://www.buseireann.ie/routes-and-timetables/239" target="_blank" class="red">
+				<h2 align="center">Route 239</h2>
 				<h3 align="center">Cork — Butlerstown <wbr>via Bandon</h3>
-			</fieldset>
-			<fieldset>
-				<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/237" target="_blank">Route 237</a></h2>
+			</a>
+			<a href="https://www.buseireann.ie/routes-and-timetables/237" target="_blank" class="red">
+				<h2 align="center">Route 237</h2>
 				<h3 align="center">Cork — Goleen <wbr>via Skibbereen</h3>
-			</fieldset>
-			<fieldset>
-				<h2 align="center"><a href="https://www.buseireann.ie/routes-and-timetables/236" target="_blank">Route 236</a></h2>
+			</a>
+			<a href="https://www.buseireann.ie/routes-and-timetables/236" target="_blank" class="red">
+				<h2 align="center">Route 236</h2>
 				<h3 align="center">Cork — Glengarriff <wbr>via Bantry</h3>
-			</fieldset>
-			<fieldset>
-				<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#skibbereen" target="_blank">Route 230</a></h2>
+			</a>
+			<a href="https://westcorkconnect.ie/timetable/#skibbereen" target="_blank" class="blue">
+				<h2 align="center">Route 230</h2>
 				<h3 align="center">Cork — Skibbereen</h3>
-			</fieldset>
-			<fieldset>
-				<h2 align="center"><a href="https://westcorkconnect.ie/timetable/#bantry" target="_blank">Route 229</a></h2>
+			</a>
+			<a href="https://westcorkconnect.ie/timetable/#bantry" target="_blank" class="blue">
+				<h2 align="center">Route 229</h2>
 				<h3 align="center">Cork — Bantry</h3>
-			</fieldset>
+			</a>
 		</div>
 	</div>
 	
